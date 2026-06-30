@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddAttendence</title>
+    <style>
+        body{
+            background-color: deepskyblue;
+            text-align: center;
+            font-weight: bold;
+        }
+        .container{
+            width:400px;
+            text-align:left;
+            color: deepskyblue;
+            margin:50px;
+            background-color: white;
+            padding:45px;
+            display: inline-block;
+            justify-content: center;
+        }
+        .container h1{
+            color: brown;
+        }
+        .form-group{
+            margin-bottom: 15px;
+        }
+        h1{
+            text-align: center;
+        }
+        input,select{
+        width:100%;
+        padding:10px;
+        border:1px solid #ccc;
+        border-radius:5px;
+        }
+        label{
+            display:block;
+            margin-bottom: 5px;
+        }
+        button{
+            color: white;
+            background-color: deepskyblue;
+            padding: 12px;
+            border:none;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button:hover{
+            background:navy;
+        }
+        .success{
+        display:none;
+        background:#d4edda;
+        color:#155724;
+        padding:10px;
+        margin-bottom:15px;
+        border-radius:5px;
+        }
+
+        .error{
+        display:none;
+        background:#f8d7da;
+        color:#721c24;
+        padding:10px;
+        margin-bottom:15px;
+        border-radius:5px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ADD ATTENDENCE</h1>
+         <div class="success" id="successMsg">
+        Attendance Added Successfully ✅
+        </div>
+        <div class="error" id="errorMsg">
+        Fillup all the fields❌
+        </div>
+        <div class="form-group">
+            <label>Employee Name:</label>
+            <input type="text" id="name">
+        </div><br>
+        <div class="form-group">
+            <label>Date:</label>
+            <input type="date" id="date">
+        </div><br>
+        <div class="form-group">
+            <label>Check-In-Time:</label>
+            <input type="time" id="checkin">
+        </div><br>
+        <div class="form-group">
+            <label>Check-Out-Time:</label>
+            <input type="time" id="checkout"><br>
+        </div><br>
+        <div class="form-group">
+            <label>Status</label>
+            <select id="status">
+                <option value="">Select Status</option>
+                <option>Present</option>
+                <option>Absent</option>
+                <option>Half Day</option>
+                <option>Leave</option>
+            </select>
+        </div><br>
+        <div>
+            <button onclick="addAttendance()">Submit Attendence</button>
+        </div>
+    </div>
+    <script>
+function addAttendance(){
+let name = document.getElementById("name").value;
+let date = document.getElementById("date").value;
+let checkin = document.getElementById("checkin").value;
+let checkout = document.getElementById("checkout").value;
+let status = document.getElementById("status").value;
+if(
+    name === "" ||
+    date === "" ||
+    checkin === "" ||
+    checkout === "" ||
+    status === ""
+){
+    document.getElementById("errorMsg").style.display = "block";
+    document.getElementById("successMsg").style.display = "none";
+}
+else{
+    document.getElementById("successMsg").style.display = "block";
+    document.getElementById("errorMsg").style.display = "none";
+
+    document.getElementById("name").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("checkin").value = "";
+    document.getElementById("checkout").value = "";
+    document.getElementById("status").value = "";
+}
+}
+</script>
+</body>
+</html>

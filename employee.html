@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>employee directory</title>
+    <style>
+        body{
+            margin-top: 0px;
+            background-color:deepskyblue;
+            color: navy;
+            justify-content: center;
+            align-items: center;
+        }
+        input,select{
+            width: 200px;
+            margin:3px;
+            padding:10px;
+            border:1px solid grey;
+            border-radius:5px;
+        }
+        .tablecontainer{
+            margin:20px;
+            padding:20px;
+            width:95%;
+        }
+        table{
+            background-color: white;
+            border-collapse: collapse;
+            border-color: rgb(161, 202, 216);
+            text-align: center;
+            width:100%;
+            height:100%;
+        }
+        th,td{
+            padding: 12px;
+        }
+        th{
+            border: none;
+            background-color:navy;
+            color:deepskyblue;
+        }
+        .present{
+            color:green;
+            font-weight: bold;
+        }
+        .absent{
+            color: red;
+            font-weight: bold;
+        }
+        .half-day{
+            color: orange;
+            font-weight: bold;
+        }
+        .leave{
+            color: darkslategray;
+            font-weight: bold;
+        }
+        button{
+            width:100px;
+            border-radius: 5px;
+            border-color: deepskyblue;
+            padding:8px;
+            background-color: white;
+            color: navy;
+            margin:20px;
+        }
+        button:hover{
+            background-color: navy;
+            color:deepskyblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="tablecontainer">
+    <h1>Employee Members</h1>
+    <div class="topbar">
+    <input type="text" id="search" placeholder="Search Employee" onkeyup="searchEmployee()">
+    <select id="department">
+        <option>All Departments</option>
+        <option>IT</option>
+        <option>MD</option>
+        <option>HR</option>
+        <option>CyberSecurity</option>
+        <option>DATA</option>
+    </select>
+    </div><br><br>
+        <table border="1px" id="employeeTable">
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Pooji</td>
+                <td>IT</td>
+                <td>Web Developer</td>
+                <td class="present">present</td>
+            </tr>
+            <tr>
+                 <td>2</td>
+                <td>Roopa</td>
+                <td>IT</td>
+                <td>Test Manager</td>
+                <td class="absent">absent</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Gowthu</td>
+                <td>IT</td>
+                <td>Java Fullstack Developer</td>
+                <td class="present">present</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Hasini</td>
+                <td>IT</td>
+                <td>Java Backend developer</td>
+                <td class="present">present</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Sneha</td>
+                <td>HR</td>
+                <td>Hr executive</td>
+                <td class="absent">absent</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Prathapu</td>
+                <td>MD</td>
+                <td>Managing Director</td>
+                <td class="absent">absent</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Meghana</td>
+                <td>IT</td>
+                <td>Python Fullstack Developer</td>
+                <td class="present">present</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Gagana</td>
+                <td>Data & Analytics</td>
+                <td>Data Scientists</td>
+                <td class="present">present</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Sharmila</td>
+                <td>IT</td>
+                <td>Python Backend Developer</td>
+                <td  class="present">present</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Jyothi</td>
+                <td>CyberSecurity</td>
+                <td>CISO</td>
+                <td  class="present">present
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+function searchEmployee() {
+    filterEmployees();
+}
+
+function filterEmployees() {
+
+    let searchText = document.getElementById("search").value.toLowerCase();
+    let department = document.getElementById("department").value;
+    let rows = document.getElementById("employeeTable").getElementsByTagName("tr");
+    for (let i = 1; i < rows.length; i++) {
+        let name =
+        rows[i].cells[1].innerText.toLowerCase();
+
+        let dept =
+        rows[i].cells[2].innerText;
+
+        let nameMatch =
+        name.includes(searchText);
+
+        let deptMatch =
+        department === "All Departments" ||
+        dept === department;
+
+        if (nameMatch && deptMatch) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+}
+</script>
+</body>
+</html>

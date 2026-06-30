@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <style>
+        body{
+            background-color:deepskyblue;
+            color: aliceblue;
+            text-align: center;
+        }
+        .login{
+            align-items: center;
+            background-color: whitesmoke;
+            color:deepskyblue;
+            border-radius: 5px;
+            padding: 55px;
+            display: inline-block;
+            margin:150px;
+            text-align: center;
+        }
+        button{
+            width: 85px;
+            text-align: center;
+            padding:3px;
+            border-radius: 5px;
+            background-color: navy;
+            color: deepskyblue;
+        }
+        #message {
+            color:brown;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        input{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>LOGIN FORM</h1>
+        <label>Email ID:</label>
+        <input type="mail" id="Email" placeholder="Enter a Email"><br><br>
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter a password"><br><br>
+        <button type="button" onclick="login()">Login</button>
+        <p id="message"></p>
+    </div>
+        <script>
+    function login(){
+
+    let email = document.getElementById("Email").value;
+
+    let password =
+    document.getElementById("password").value;
+
+    if(email !== "" && password !== ""){
+
+        window.location.href = "dashboard.html";
+
+    }else{
+
+        document.getElementById("message").innerHTML =
+        "Enter Email and Password";
+    }
+}
+</script>
+</body>
+</html>
